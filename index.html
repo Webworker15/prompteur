@@ -2,51 +2,427 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ma page simple</title>
+    <title>Prompteur en ligne - Téléprompteur 100% gratuit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #222;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        main {
-            padding: 20px;
-        }
-        footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    <meta name="description" content="Le meilleur téléprompteur en ligne 100% gratuit pour lire du texte dans votre navigateur PC ou MAC">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8ElEQVR4nO2Wz0sCQRTHZ5fVzDQzK4uC6NIh6BDUqT9A8GJ/QIcO/QHdOkSXjh2C/oAuXTp0CsIuQYcgqEM/oKKyQjGzMjOz2dmd3XWxMLBld3d2d8EPBobZeZ/3ZuaN4zhcXFxcXP9bAJDVl6MBr0d8BsDwHPnkpIZ8egqAx8aIjRAj4KfjLp4jAERiAACRSPitTaIA4HmzMIXbBiAqAvCkpuDL6Rm8Xl/D0/U1+CqVL3BdgbwAz+nJaK0GpXIZCoUCPD8/w93dHVxeXMBWJmMCcBCADwCYTqdNQoVCAba3t2F/fx8ODw8hm81+AixH2ACogOdAu90KRaPRD+BYLMYEoBZtNxqmB+r1ut0AQCy73Q41m03TA9VqFbrdbgB4PaB6YAQAcNAwOw3T6TQ/NDTkmZgY982ODnOzsxN8/sXEz7k5mJqagt5uF3q9XgBWAdCPNO3gE8/C4tKvhcXlfwXg5+bnIRAIwHA4zARgKSwW/ZLJFMUh3e0RQohQVRYAAAiF1sKhkEZJSLerybLCBCAMAAuKoixLkowBYF1RlIyo6wRAhDNdUX+JSqJESXCSonwPoGmaIklSYJCnJElU+SAWXdf3ZFneGOxHUZQkmqksSzm0pK1QzjTaH0ajy6PRaMrv9+MjwON/Mngb/vO/5VxcXFz/Xe8GVKG/bHKY8gAAAABJRU5ErkJggg==">
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB8ElEQVR4nO2Wz0sCQRTHZ5fVzDQzK4uC6NIh6BDUqT9A8GJ/QIcO/QHdOkSXjh2C/oAuXTp0CsIuQYcgqEM/oKKyQjGzMjOz2dmd3XWxMLBld3d2d8EPBobZeZ/3ZuaN4zhcXFxcXP9bAJDVl6MBr0d8BsDwHPnkpIZ8egqAx8aIjRAj4KfjLp4jAERiAACRSPitTaIA4HmzMIXbBiAqAvCkpuDL6Rm8Xl/D0/U1+CqVL3BdgbwAz+nJaK0GpXIZCoUCPD8/w93dHVxeXMBWJmMCcBCADwCYTqdNQoVCAba3t2F/fx8ODw8hm81+AixH2ACogOdAu90KRaPRD+BYLMYEoBZtNxqmB+r1ut0AQCy73Q41m03TA9VqFbrdbgB4PaB6YAQAcNAwOw3T6TQ/NDTkmZgY982ODnOzsxN8/sXEz7k5mJqagt5uF3q9XgBWAdCPNO3gE8/C4tKvhcXlfwXg5+bnIRAIwHA4zARgKSwW/ZLJFMUh3e0RQohQVRYAAAiF1sKhkEZJSLerybLCBCAMAAuKoixLkowBYF1RlIyo6wRAhDNdUX+JSqJESXCSonwPoGmaIklSYJCnJElU+SAWXdf3ZFneGOxHUZQkmqksSzm0pK1QzjTaH0ajy6PRaMrv9+MjwON/Mngb/vO/5VxcXFz/Xe8GVKG/bHKY8gAAAABJRU5ErkJggg==">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
-    <h1>Bienvenue sur ma page</h1>
+    <div class="header-content">
+        <h1>📺 Prompteur en ligne</h1>
+        <p class="subtitle">Téléprompteur gratuit pour lire du texte dans votre navigateur</p>
+    </div>
 </header>
 
 <main>
-    <h2>À propos</h2>
-    <p>Ceci est une page HTML très simple. Vous pouvez la modifier selon vos besoins.</p>
+    <!-- Section d'édition -->
+    <div id="editSection" class="edit-section">
+        <div class="container">
+            <div class="edit-header">
+                <h2>Rédigez ou collez le texte à prompter...</h2>
+                <div class="file-actions">
+                    <button id="importBtn" class="btn btn-outline">
+                        <span class="icon">📁</span> Importer un fichier
+                    </button>
+                    <input type="file" id="fileInput" accept=".txt,.doc,.docx" style="display: none;">
+                    <button id="saveBtn" class="btn btn-outline">
+                        <span class="icon">💾</span> Sauvegarder
+                    </button>
+                    <button id="clearBtn" class="btn btn-outline">
+                        <span class="icon">🗑️</span> Effacer
+                    </button>
+                </div>
+            </div>
+            
+            <textarea id="textInput" placeholder="Tapez ou collez votre texte ici...
+            
+Astuce : Vous pouvez importer un fichier texte ou sauvegarder votre travail pour plus tard.
 
-    <button onclick="alert('Bonjour !')">Cliquez ici</button>
+Le prompteur s'adaptera automatiquement à la vitesse que vous définissez et calculera la durée estimée de votre discours."></textarea>
+            
+            <!-- Panneau de contrôle -->
+            <div class="control-panel">
+                <div class="control-section">
+                    <h3><span class="icon">⚡</span> Vitesse & Durée</h3>
+                    <div class="control-row">
+                        <label for="speedControl">Vitesse :</label>
+                        <input type="range" id="speedControl" min="1" max="20" value="5">
+                        <span id="speedValue" class="value-display">5</span>
+                    </div>
+                    <div class="duration-info">
+                        <span class="icon">⏱️</span>
+                        <span id="durationEstimate">Durée estimée : --:--</span>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3><span class="icon">📝</span> Taille du texte</h3>
+                    <div class="control-row">
+                        <label for="fontSizeControl">Taille :</label>
+                        <input type="range" id="fontSizeControl" min="20" max="100" value="48">
+                        <span id="fontSizeValue" class="value-display">48px</span>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3><span class="icon">🎨</span> Apparence</h3>
+                    <div class="control-row">
+                        <label for="bgColorControl">Fond :</label>
+                        <select id="bgColorControl">
+                            <option value="#000000">Noir</option>
+                            <option value="#1a1a1a">Gris foncé</option>
+                            <option value="#0a3d0a">Vert foncé</option>
+                            <option value="#0a1a3d">Bleu foncé</option>
+                        </select>
+                    </div>
+                    <div class="control-row">
+                        <label for="textColorControl">Texte :</label>
+                        <select id="textColorControl">
+                            <option value="#ffffff">Blanc</option>
+                            <option value="#00ff00">Vert</option>
+                            <option value="#ffff00">Jaune</option>
+                            <option value="#00ffff">Cyan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3><span class="icon">🔄</span> Miroir & Inverser</h3>
+                    <div class="toggle-buttons">
+                        <button id="mirrorBtn" class="btn btn-toggle">
+                            <span class="icon">↔️</span> Miroir horizontal
+                        </button>
+                        <button id="flipBtn" class="btn btn-toggle">
+                            <span class="icon">↕️</span> Inverser vertical
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3><span class="icon">🎙️</span> Enregistrement audio</h3>
+                    <div class="recording-controls">
+                        <button id="recordBtn" class="btn btn-record">
+                            <span class="icon">⏺️</span> Démarrer l'enregistrement
+                        </button>
+                        <button id="stopRecordBtn" class="btn btn-danger" disabled>
+                            <span class="icon">⏹️</span> Arrêter
+                        </button>
+                        <div id="recordingStatus" class="recording-status"></div>
+                    </div>
+                    <div id="audioPlayback" class="audio-playback"></div>
+                </div>
+            </div>
+
+            <button id="startPrompterBtn" class="btn btn-start">
+                <span class="icon">🚀</span> Lancer le prompteur !
+            </button>
+        </div>
+    </div>
+
+    <!-- Section prompteur (plein écran) -->
+    <div id="prompterSection" class="prompter-section hidden">
+        <!-- Barre de contrôle flottante -->
+        <div id="floatingControls" class="floating-controls">
+            <div class="timer-display">
+                <span id="timerDisplay">00:00:00</span>
+            </div>
+            
+            <div class="playback-controls">
+                <button id="playPauseBtn" class="control-btn">
+                    <span class="icon">⏸️</span>
+                </button>
+                <button id="stopBtn" class="control-btn">
+                    <span class="icon">⏹️</span>
+                </button>
+                <button id="restartBtn" class="control-btn">
+                    <span class="icon">🔄</span>
+                </button>
+            </div>
+
+            <div class="speed-controls">
+                <button id="speedDownBtn" class="control-btn">
+                    <span class="icon">🐌</span>
+                </button>
+                <span id="currentSpeed" class="speed-display">5</span>
+                <button id="speedUpBtn" class="control-btn">
+                    <span class="icon">🐰</span>
+                </button>
+            </div>
+
+            <div class="size-controls">
+                <button id="sizeDownBtn" class="control-btn">
+                    <span class="icon">A-</span>
+                </button>
+                <button id="sizeUpBtn" class="control-btn">
+                    <span class="icon">A+</span>
+                </button>
+            </div>
+
+            <button id="exitFullscreenBtn" class="control-btn exit-btn">
+                <span class="icon">✖️</span> Quitter
+            </button>
+        </div>
+
+        <!-- Zone de défilement du texte -->
+        <div id="prompterDisplay" class="prompter-display">
+            <div id="prompterText" class="prompter-text">
+                Votre texte défilera ici...
+            </div>
+        </div>
+
+        <!-- Guide visuel (ligne de lecture) -->
+        <div id="readingGuide" class="reading-guide"></div>
+    </div>
+
+    <!-- Section SEO -->
+    <section id="seoSection" class="seo-section">
+        <div class="container">
+            <article class="seo-content">
+                <h2>Prompteur en ligne gratuit : l'outil professionnel pour vos vidéos</h2>
+                
+                <p>Notre <strong>prompteur en ligne</strong> est une application web gratuite et complète qui transforme votre navigateur en un véritable téléprompteur professionnel. Que vous soyez créateur de contenu YouTube, journaliste, formateur, enseignant ou simplement quelqu'un qui souhaite enregistrer une vidéo avec un discours fluide, notre prompteur en ligne vous offre tous les outils nécessaires pour réussir vos prises de parole.</p>
+
+                <h3>Qu'est-ce qu'un prompteur en ligne ?</h3>
+                
+                <p>Un <strong>prompteur en ligne</strong>, également appelé téléprompteur ou teleprompter, est un outil numérique qui affiche votre texte de manière défilante sur votre écran, vous permettant de lire votre script tout en regardant directement la caméra. Contrairement aux prompteurs physiques qui coûtent plusieurs centaines voire milliers d'euros, notre <strong>prompteur en ligne gratuit</strong> fonctionne directement dans votre navigateur web, sans aucun téléchargement ni installation nécessaire.</p>
+
+                <h3>Pourquoi utiliser un prompteur en ligne pour vos vidéos ?</h3>
+                
+                <p>L'utilisation d'un <strong>prompteur en ligne</strong> présente de nombreux avantages pour tous ceux qui créent du contenu vidéo :</p>
+
+                <div class="seo-benefits">
+                    <div class="benefit-item">
+                        <h4>📹 Vidéos YouTube professionnelles</h4>
+                        <p>Avec notre <strong>prompteur en ligne</strong>, créez des vidéos YouTube fluides et professionnelles sans hésitation ni trous de mémoire. Le défilement automatique vous permet de maintenir un rythme constant et de garder le contact visuel avec votre audience.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <h4>🎓 Formations et présentations</h4>
+                        <p>Que ce soit pour des cours en ligne, des webinaires ou des présentations professionnelles, notre <strong>prompteur en ligne</strong> vous aide à délivrer votre message avec assurance. Contrôlez parfaitement le timing et la durée de vos interventions grâce au chronomètre intégré.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <h4>💼 CV vidéo et entretiens</h4>
+                        <p>Démarquez-vous avec un CV vidéo professionnel ! Notre <strong>prompteur en ligne</strong> vous permet de préparer et enregistrer votre présentation personnelle de manière naturelle et convaincante, tout en ayant la possibilité d'enregistrer l'audio directement.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <h4>📺 Contenu pour réseaux sociaux</h4>
+                        <p>Créez du contenu engageant pour TikTok, Instagram Reels, ou Facebook avec notre <strong>prompteur en ligne</strong>. La fonction d'estimation de durée vous aide à respecter les contraintes de temps de chaque plateforme.</p>
+                    </div>
+                </div>
+
+                <h3>Fonctionnalités avancées de notre prompteur en ligne</h3>
+
+                <p>Notre <strong>prompteur en ligne</strong> se distingue par ses nombreuses fonctionnalités professionnelles :</p>
+
+                <ul class="features-list">
+                    <li><strong>Contrôle de vitesse précis</strong> : Ajustez la vitesse de défilement de 1 à 20 pour correspondre parfaitement à votre rythme de lecture naturel.</li>
+                    
+                    <li><strong>Estimation de durée automatique</strong> : Notre <strong>prompteur en ligne</strong> calcule automatiquement la durée estimée de votre discours en fonction du nombre de mots et de la vitesse sélectionnée.</li>
+                    
+                    <li><strong>Personnalisation complète</strong> : Choisissez la taille du texte (20-100px), la couleur du fond et du texte pour une lisibilité optimale selon vos conditions d'éclairage.</li>
+                    
+                    <li><strong>Mode miroir et inversion</strong> : Utilisez notre <strong>prompteur en ligne</strong> avec un dispositif de miroir physique grâce aux options de retournement horizontal et vertical.</li>
+                    
+                    <li><strong>Enregistrement audio intégré</strong> : Enregistrez directement votre voix pendant que vous lisez le texte. Tous les enregistrements restent sur votre appareil pour une confidentialité totale.</li>
+                    
+                    <li><strong>Sauvegarde automatique</strong> : Votre texte est automatiquement sauvegardé dans votre navigateur. Reprenez votre travail à tout moment sans craindre de perdre vos scripts.</li>
+                    
+                    <li><strong>Import et export de fichiers</strong> : Importez vos scripts depuis des fichiers texte et exportez-les facilement. Compatible avec tous les formats texte courants.</li>
+                    
+                    <li><strong>Interface responsive</strong> : Notre <strong>prompteur en ligne</strong> fonctionne parfaitement sur ordinateur, tablette et même smartphone, s'adaptant à la taille de votre écran.</li>
+                </ul>
+
+                <h3>Comment utiliser notre prompteur en ligne ?</h3>
+
+                <p>Utiliser notre <strong>prompteur en ligne</strong> est extrêmement simple et ne nécessite aucune compétence technique :</p>
+
+                <ol class="steps-list">
+                    <li><strong>Rédigez ou importez votre texte</strong> : Tapez directement votre script dans la zone de texte ou importez un fichier texte existant. Le <strong>prompteur en ligne</strong> accepte les fichiers .txt et affiche immédiatement votre contenu.</li>
+                    
+                    <li><strong>Configurez vos paramètres</strong> : Ajustez la vitesse de défilement selon votre rythme de lecture, choisissez la taille de texte idéale pour votre distance à l'écran, et sélectionnez les couleurs qui vous conviennent le mieux.</li>
+                    
+                    <li><strong>Lancez le prompteur</strong> : Cliquez sur le bouton "Lancer le prompteur !" pour passer en mode plein écran. Le texte commence à défiler automatiquement à la vitesse que vous avez définie.</li>
+                    
+                    <li><strong>Contrôlez le défilement</strong> : Utilisez les contrôles flottants ou les raccourcis clavier pour mettre en pause, reprendre, accélérer ou ralentir le défilement en temps réel.</li>
+                    
+                    <li><strong>Enregistrez si nécessaire</strong> : Si vous souhaitez capturer votre audio, activez l'enregistrement avant de commencer. Votre <strong>prompteur en ligne</strong> enregistrera votre voix tout en affichant le texte.</li>
+                </ol>
+
+                <h3>Prompteur en ligne vs prompteur physique : pourquoi choisir la version web ?</h3>
+
+                <p>Les prompteurs physiques traditionnels peuvent coûter entre 200€ et 5000€ selon les modèles. Notre <strong>prompteur en ligne gratuit</strong> offre la plupart des fonctionnalités professionnelles sans aucun investissement :</p>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <h4>✅ Avantages du prompteur en ligne</h4>
+                        <ul>
+                            <li>Gratuit et illimité</li>
+                            <li>Aucune installation requise</li>
+                            <li>Accessible depuis n'importe quel appareil</li>
+                            <li>Mises à jour automatiques avec nouvelles fonctionnalités</li>
+                            <li>Sauvegarde cloud de vos scripts</li>
+                            <li>Enregistrement audio intégré</li>
+                            <li>Utilisation immédiate</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Astuces et conseils pour optimiser l'utilisation de votre prompteur en ligne</h3>
+
+                <p>Pour tirer le meilleur parti de notre <strong>prompteur en ligne</strong>, voici quelques conseils de professionnels :</p>
+
+                <ul class="tips-list">
+                    <li><strong>Positionnez votre caméra correctement</strong> : Placez votre webcam ou caméra juste au-dessus ou en dessous de l'écran affichant le <strong>prompteur en ligne</strong>. Cela donnera l'impression que vous regardez directement dans l'objectif.</li>
+                    
+                    <li><strong>Pratiquez d'abord</strong> : Avant l'enregistrement final, faites plusieurs essais avec le <strong>prompteur en ligne</strong> pour trouver la vitesse de défilement qui vous convient le mieux.</li>
+                    
+                    <li><strong>Rédigez pour l'oral</strong> : Écrivez votre script comme vous parlez, pas comme vous écrivez. Utilisez des phrases courtes et un langage naturel dans votre <strong>prompteur en ligne</strong>.</li>
+                    
+                    <li><strong>Marquez les pauses</strong> : Ajoutez des symboles (comme "..." ou "/") dans votre texte pour indiquer où faire des pauses naturelles pendant la lecture sur le <strong>prompteur en ligne</strong>.</li>
+                    
+                    <li><strong>Ajustez la taille du texte</strong> : Si vous êtes loin de l'écran, augmentez la taille du texte dans le <strong>prompteur en ligne</strong>. Une police de 48-60px est généralement idéale à 1-2 mètres.</li>
+                    
+                    <li><strong>Utilisez les raccourcis clavier</strong> : Mémorisez les raccourcis (Espace pour pause, flèches pour ajuster la vitesse) pour contrôler le <strong>prompteur en ligne</strong> sans quitter le cadre.</li>
+                </ul>
+
+                <h3>Pour qui est conçu ce prompteur en ligne ?</h3>
+
+                <p>Notre <strong>prompteur en ligne</strong> est l'outil idéal pour de nombreux professionnels et créateurs :</p>
+
+                <div class="target-audience">
+                    <p><strong>YouTubeurs et créateurs de contenu</strong> : Le <strong>prompteur en ligne</strong> vous permet de créer des vidéos plus fluides et professionnelles, réduisant considérablement le temps de post-production en éliminant les erreurs et hésitations.</p>
+
+                    <p><strong>Formateurs et enseignants</strong> : Créez des cours en ligne structurés avec notre <strong>prompteur en ligne</strong>. La fonction d'estimation de durée vous aide à respecter le timing de vos modules de formation.</p>
+
+                    <p><strong>Communicants et responsables marketing</strong> : Produisez des messages vidéo corporate, des annonces produits ou des communications internes avec un <strong>prompteur en ligne</strong> professionnel.</p>
+
+                    <p><strong>Journalistes et présentateurs</strong> : Notre <strong>prompteur en ligne</strong> offre la même expérience que les prompteurs utilisés dans les studios de télévision, pour une fraction du coût.</p>
+
+                    <p><strong>Coachs et consultants</strong> : Enregistrez des vidéos de conseil, des témoignages ou des présentations de services avec l'assurance que donne un <strong>prompteur en ligne</strong> fiable.</p>
+
+                    <p><strong>Étudiants et demandeurs d'emploi</strong> : Créez des CV vidéo percutants ou préparez vos entretiens à distance avec notre <strong>prompteur en ligne gratuit</strong>.</p>
+                </div>
+
+                <h3>Compatibilité et accessibilité du prompteur en ligne</h3>
+
+                <p>Notre <strong>prompteur en ligne</strong> fonctionne sur tous les navigateurs modernes et systèmes d'exploitation :</p>
+
+                <ul class="compatibility-list">
+                    <li><strong>Windows</strong> : Compatible avec Chrome, Firefox, Edge et Opera</li>
+                    <li><strong>Mac</strong> : Fonctionne parfaitement sur Safari, Chrome et Firefox</li>
+                    <li><strong>Linux</strong> : Support complet sur tous les navigateurs principaux</li>
+                    <li><strong>Tablettes</strong> : iPad, Samsung Galaxy Tab, et autres tablettes Android</li>
+                    <li><strong>Smartphones</strong> : Utilisable sur iPhone et Android pour les petits projets</li>
+                </ul>
+
+                <p>Le <strong>prompteur en ligne</strong> est entièrement responsive et s'adapte automatiquement à la taille de votre écran pour une expérience optimale sur tous les appareils.</p>
+
+                <h3>Sécurité et confidentialité de votre prompteur en ligne</h3>
+
+                <p>La confidentialité de vos contenus est notre priorité. Notre <strong>prompteur en ligne</strong> fonctionne à 100% en local dans votre navigateur :</p>
+
+                <ul class="security-list">
+                    <li>Aucun texte n'est jamais envoyé à nos serveurs</li>
+                    <li>Les enregistrements audio restent sur votre appareil</li>
+                    <li>La sauvegarde automatique utilise uniquement le stockage local de votre navigateur</li>
+                    <li>Pas de compte à créer, pas de données personnelles collectées</li>
+                    <li>Code open-source vérifiable</li>
+                </ul>
+
+                <p>Utilisez notre <strong>prompteur en ligne</strong> en toute confiance pour vos contenus sensibles, professionnels ou personnels.</p>
+
+                <h3>Prompteur en ligne gratuit : aucune limitation</h3>
+
+                <p>Contrairement à de nombreux outils en ligne qui imposent des restrictions dans leur version gratuite, notre <strong>prompteur en ligne</strong> est totalement gratuit et illimité :</p>
+
+                <ul class="free-features">
+                    <li>Aucune limite de longueur de texte</li>
+                    <li>Utilisation illimitée sans inscription</li>
+                    <li>Toutes les fonctionnalités accessibles gratuitement</li>
+                    <li>Pas de publicité intrusive</li>
+                    <li>Pas de filigrane sur vos enregistrements</li>
+                    <li>Mises à jour gratuites avec nouvelles fonctionnalités</li>
+                </ul>
+
+                <h3>L'avenir du prompteur en ligne</h3>
+
+                <p>Nous améliorons continuellement notre <strong>prompteur en ligne</strong> en écoutant les retours de notre communauté d'utilisateurs. Parmi les fonctionnalités à venir :</p>
+
+                <ul>
+                    <li>Synchronisation cloud de vos scripts</li>
+                    <li>Télécommande smartphone pour contrôler le prompteur à distance</li>
+                    <li>Templates de scripts pour différents types de vidéos</li>
+                    <li>Détection automatique du rythme de lecture</li>
+                    <li>Export vidéo avec incrustation du prompteur</li>
+                </ul>
+
+                <h3>Commencez maintenant avec le meilleur prompteur en ligne</h3>
+
+                <p>Vous avez tout ce qu'il faut pour créer des vidéos professionnelles dès aujourd'hui. Notre <strong>prompteur en ligne</strong> est prêt à l'emploi, gratuit, et ne nécessite aucune compétence technique. Que vous soyez un créateur débutant ou un professionnel expérimenté, vous trouverez dans cet outil tout ce dont vous avez besoin pour améliorer la qualité de vos vidéos.</p>
+
+                <p>Commencez dès maintenant : tapez ou collez votre texte dans la zone d'édition ci-dessus, ajustez les paramètres selon vos préférences, et cliquez sur "Lancer le prompteur !" Votre premier enregistrement professionnel n'est qu'à quelques clics.</p>
+
+                <div class="cta-box">
+                    <h4>Prêt à créer des vidéos professionnelles ?</h4>
+                    <p>Utilisez notre <strong>prompteur en ligne gratuit</strong> maintenant et découvrez pourquoi des milliers de créateurs nous font confiance pour leurs vidéos.</p>
+                    <a href="#textInput" class="btn-cta">Commencer à utiliser le prompteur →</a>
+                </div>
+
+                <div class="faq">
+                    <h3>Questions fréquentes sur le prompteur en ligne</h3>
+                    
+                    <div class="faq-item">
+                        <h4>Le prompteur en ligne est-il vraiment gratuit ?</h4>
+                        <p>Oui, notre <strong>prompteur en ligne</strong> est 100% gratuit, sans limitation de durée ou de fonctionnalités. Aucun abonnement requis, aucun frais caché.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Dois-je installer un logiciel pour utiliser le prompteur en ligne ?</h4>
+                        <p>Non, le <strong>prompteur en ligne</strong> fonctionne directement dans votre navigateur web. Aucun téléchargement ni installation nécessaire.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Puis-je utiliser le prompteur en ligne sur tablette ?</h4>
+                        <p>Absolument ! Notre <strong>prompteur en ligne</strong> est responsive et fonctionne parfaitement sur iPad, tablettes Android et tous les appareils mobiles.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Mes textes sont-ils sauvegardés dans le prompteur en ligne ?</h4>
+                        <p>Oui, le <strong>prompteur en ligne</strong> sauvegarde automatiquement votre texte dans votre navigateur. Vos données restent privées et locales sur votre appareil.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Puis-je utiliser le prompteur en ligne hors connexion ?</h4>
+                        <p>Une fois la page chargée, le <strong>prompteur en ligne</strong> peut fonctionner hors ligne pour lire et faire défiler vos textes déjà sauvegardés.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Comment ajuster la vitesse du prompteur en ligne ?</h4>
+                        <p>Le <strong>prompteur en ligne</strong> permet d'ajuster la vitesse avec un curseur (de 1 à 20) avant de démarrer, et vous pouvez aussi la modifier en direct pendant le défilement avec les boutons +/- ou les flèches du clavier.</p>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    </section>
 </main>
 
 <footer>
-    © 2026 - Mon site web
+    <div class="footer-content">
+        <p>© 2026 - Prompteur en ligne | Application web gratuite</p>
+        <p class="footer-note">Aucune installation nécessaire • Fonctionne sur PC, Mac et tablettes • Enregistrement local sécurisé</p>
+    </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
